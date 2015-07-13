@@ -85,6 +85,45 @@ function wwalk_init() {
 
 		//display metabox form
 
+		//Display a Map using Google Maps
+		echo '<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1uzCE_C_1BiAOdQxty2iYBPH0m7Biz7w">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: 52.498, lng: -3.642},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+				var flightPlanCoordinates = [
+	    new google.maps.LatLng(37.772323, -122.214897),
+	    new google.maps.LatLng(21.291982, -157.821856),
+	    new google.maps.LatLng(-18.142599, 178.431),
+	    new google.maps.LatLng(-27.46758, 153.027892)
+	  ];
+	  var flightPath = new google.maps.Polyline({
+	    path: flightPlanCoordinates,
+	    geodesic: true,
+	    strokeColor: "#FF0000",
+	    strokeOpacity: 1.0,
+	    strokeWeight: 2,
+			editable:true
+	  });
+
+	  flightPath.setMap(map);
+      }
+
+      google.maps.event.addDomListener(window, "load", initialize);
+
+    </script>
+
+  <body>
+<div id="map-canvas" style ="height:500px; width:100%;"></div>';
+
+
+
 	};
 
 	//Save the Metabox.
